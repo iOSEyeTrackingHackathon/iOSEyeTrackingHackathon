@@ -1,0 +1,186 @@
+{
+  "storage" : "model.espresso.weights",
+  "properties" : {
+
+  },
+  "format_version" : 200,
+  "layers" : [
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "eye_model1_conv2d_1_output",
+      "blob_weights" : 3,
+      "K" : 1,
+      "blob_biases" : 1,
+      "stride_x" : 3,
+      "name" : "eye_model1_conv2d_1",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "stride_y" : 3,
+      "has_biases" : 1,
+      "C" : 32,
+      "bottom" : "eye_left",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "pad_r" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "eye_model1_global_average_pooling2d_1_output",
+      "size_x" : 22,
+      "is_global" : 1,
+      "top_shape_style" : 0,
+      "stride_x" : 1,
+      "avg_or_max" : 0,
+      "average_count_exclude_padding" : 1,
+      "type" : "pool",
+      "name" : "eye_model1_global_average_pooling2d_1",
+      "pad_t" : 0,
+      "stride_y" : 1,
+      "bottom" : "eye_model1_conv2d_1_output",
+      "weights" : {
+
+      },
+      "pad_mode" : 2,
+      "size_y" : 22,
+      "pad_value" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "eye_model2_conv2d_2_output",
+      "blob_weights" : 7,
+      "K" : 1,
+      "blob_biases" : 5,
+      "stride_x" : 3,
+      "name" : "eye_model2_conv2d_2",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "stride_y" : 3,
+      "has_biases" : 1,
+      "C" : 32,
+      "bottom" : "eye_right",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "pad_r" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "eye_model2_global_average_pooling2d_2_output",
+      "size_x" : 22,
+      "is_global" : 1,
+      "top_shape_style" : 0,
+      "stride_x" : 1,
+      "avg_or_max" : 0,
+      "average_count_exclude_padding" : 1,
+      "type" : "pool",
+      "name" : "eye_model2_global_average_pooling2d_2",
+      "pad_t" : 0,
+      "stride_y" : 1,
+      "bottom" : "eye_model2_conv2d_2_output",
+      "weights" : {
+
+      },
+      "pad_mode" : 2,
+      "size_y" : 22,
+      "pad_value" : 0
+    },
+    {
+      "weights" : {
+
+      },
+      "top" : "concatenate_1_output",
+      "type" : "concat",
+      "name" : "concatenate_1",
+      "bottom" : "eye_model1_global_average_pooling2d_1_output,eye_model2_global_average_pooling2d_2_output"
+    },
+    {
+      "nB" : 64,
+      "top" : "dense_1__activation___output",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 2,
+      "blob_weights" : 11,
+      "type" : "inner_product",
+      "has_relu" : 1,
+      "bottom" : "concatenate_1_output",
+      "blob_biases" : 9,
+      "has_tanh" : 0,
+      "name" : "dense_1",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 20,
+      "top" : "dense_2__activation___output",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 2,
+      "blob_weights" : 15,
+      "type" : "inner_product",
+      "has_relu" : 1,
+      "bottom" : "ff",
+      "blob_biases" : 13,
+      "has_tanh" : 0,
+      "name" : "dense_2",
+      "has_prelu" : 0
+    },
+    {
+      "weights" : {
+
+      },
+      "top" : "concatenate_2_output",
+      "type" : "concat",
+      "name" : "concatenate_2",
+      "bottom" : "dense_1__activation___output,dense_2__activation___output"
+    },
+    {
+      "nB" : 4,
+      "top" : "xy",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 2,
+      "blob_weights" : 19,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "concatenate_2_output",
+      "blob_biases" : 17,
+      "has_tanh" : 0,
+      "name" : "dense_3",
+      "has_prelu" : 0
+    }
+  ]
+}

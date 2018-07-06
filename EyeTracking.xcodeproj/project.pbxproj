@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19D2DD0E20EF91110036C091 /* VMEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D2DD0D20EF91110036C091 /* VMEX.framework */; };
-		19D2DD0F20EF91110036C091 /* VMEX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19D2DD0D20EF91110036C091 /* VMEX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		190BD48020EFD08A0090E76D /* VMEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190BD47F20EFD08A0090E76D /* VMEX.framework */; };
+		190BD48120EFD08A0090E76D /* VMEX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 190BD47F20EFD08A0090E76D /* VMEX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		190BD48520EFD3E30090E76D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BD48420EFD3E30090E76D /* StartViewController.swift */; };
+		190BD48720EFD3E90090E76D /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BD48620EFD3E90090E76D /* DifficultyViewController.swift */; };
+		190BD48920EFD3EE0090E76D /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BD48820EFD3EE0090E76D /* DictionaryViewController.swift */; };
 		19DB420720EE47DE0048753A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB420620EE47DE0048753A /* AppDelegate.swift */; };
-		19DB420920EE47DE0048753A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB420820EE47DE0048753A /* ViewController.swift */; };
+		19DB420920EE47DE0048753A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB420820EE47DE0048753A /* GameViewController.swift */; };
 		19DB420C20EE47DE0048753A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19DB420A20EE47DE0048753A /* Main.storyboard */; };
 		19DB420E20EE47DF0048753A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19DB420D20EE47DF0048753A /* Assets.xcassets */; };
 		19DB421120EE47DF0048753A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19DB420F20EE47DF0048753A /* LaunchScreen.storyboard */; };
@@ -24,7 +27,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				19D2DD0F20EF91110036C091 /* VMEX.framework in Embed Frameworks */,
+				190BD48120EFD08A0090E76D /* VMEX.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -32,10 +35,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		19D2DD0D20EF91110036C091 /* VMEX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VMEX.framework; sourceTree = "<group>"; };
+		190BD47F20EFD08A0090E76D /* VMEX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VMEX.framework; sourceTree = "<group>"; };
+		190BD48420EFD3E30090E76D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		190BD48620EFD3E90090E76D /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
+		190BD48820EFD3EE0090E76D /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		19DB420320EE47DE0048753A /* EyeTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyeTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19DB420620EE47DE0048753A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		19DB420820EE47DE0048753A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		19DB420820EE47DE0048753A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		19DB420B20EE47DE0048753A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19DB420D20EE47DF0048753A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19DB421020EE47DF0048753A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19D2DD0E20EF91110036C091 /* VMEX.framework in Frameworks */,
+				190BD48020EFD08A0090E76D /* VMEX.framework in Frameworks */,
 				A5F5490AE6B19FD832D0B608 /* Pods_EyeTracking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,7 +67,7 @@
 		19DB41FA20EE47DE0048753A = {
 			isa = PBXGroup;
 			children = (
-				19D2DD0D20EF91110036C091 /* VMEX.framework */,
+				190BD47F20EFD08A0090E76D /* VMEX.framework */,
 				19DB420520EE47DE0048753A /* EyeTracking */,
 				19DB420420EE47DE0048753A /* Products */,
 				D21BDD4E60FCF00FDF0FD01A /* Pods */,
@@ -84,7 +90,10 @@
 				19DB420620EE47DE0048753A /* AppDelegate.swift */,
 				19DB420F20EE47DF0048753A /* LaunchScreen.storyboard */,
 				19DB420A20EE47DE0048753A /* Main.storyboard */,
-				19DB420820EE47DE0048753A /* ViewController.swift */,
+				190BD48420EFD3E30090E76D /* StartViewController.swift */,
+				190BD48620EFD3E90090E76D /* DifficultyViewController.swift */,
+				190BD48820EFD3EE0090E76D /* DictionaryViewController.swift */,
+				19DB420820EE47DE0048753A /* GameViewController.swift */,
 				19DB420D20EE47DF0048753A /* Assets.xcassets */,
 			);
 			path = EyeTracking;
@@ -224,7 +233,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19DB420920EE47DE0048753A /* ViewController.swift in Sources */,
+				190BD48920EFD3EE0090E76D /* DictionaryViewController.swift in Sources */,
+				19DB420920EE47DE0048753A /* GameViewController.swift in Sources */,
+				190BD48720EFD3E90090E76D /* DifficultyViewController.swift in Sources */,
+				190BD48520EFD3E30090E76D /* StartViewController.swift in Sources */,
 				19DB420720EE47DE0048753A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
