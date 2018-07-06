@@ -15,25 +15,17 @@ let leftMargin: CGFloat = 20
 
 class GameViewController: UIViewController {
     
-    @IBOutlet weak var statementLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     let sessionHandler = SessionHandler()
     let statement = "Mother Father Gentleman"
     var labelXs = [CGFloat]()
     var stackView: UIStackView = UIStackView()
     var counts = [String: Int]()
-    var label =  UILabel()
     var difficulty: Difficulty?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
-        //MARK: 시선 추적점 초기화
-        label.frame.size = CGSize(width: 20, height: 20)
-        label.backgroundColor = UIColor.red
-        label.layer.cornerRadius = 10
-        label.layer.masksToBounds = true
-        label.alpha = 0
-        self.view.addSubview(label)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,17 +37,12 @@ class GameViewController: UIViewController {
 
 extension GameViewController: Receiver {
     func receive(value: [Double], isTracking: Bool) {
-        //MARK: 시선 추적점 위치 설정
-        DispatchQueue.main.async {
-            self.label.frame.origin = CGPoint(x: CGFloat(value.first!), y: self.view.frame.height / 2 + 10)
-        }
         //MARK: 보고 있는 단어를 찾는 알고리즘
         let eyeX: CGFloat = CGFloat(value.first ?? 0)
         for index in 0..<labelXs.count {
             if labelXs[index] - eyeX > 0 {
                 DispatchQueue.main.async {
                     guard let label = self.stackView.arrangedSubviews[index] as? UILabel else { return }
-                    print(label.text!)
                     let count = self.counts[label.text!] ?? 0
                     self.counts[label.text!] = count + 1
                     let filtered = self.counts.filter { $1 == 100 }
@@ -81,14 +68,13 @@ extension GameViewController: Receiver {
         }
     }
     func calibrationFinished() {
-        self.label.alpha = 0.4
         //MARK: 문장을 단어로 분리
         let splited = statement.split(separator: " ").map { String($0) }
         var labels = [UILabel]()
         for word in splited {
             let label = UILabel()
             label.text = word
-            label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+            label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
             labels.append(label)
         }
         //MARK: 스택뷰 초기화

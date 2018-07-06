@@ -25,6 +25,9 @@ class DifficultyViewController: UIViewController {
         self.easyButton.tag = 0
         self.mediumButton.tag = 1
         self.hardButton.tag = 2
+        self.easyButton.addTarget(self, action: #selector(touchUpButtons(_:)), for: .touchUpInside)
+        self.mediumButton.addTarget(self, action: #selector(touchUpButtons(_:)), for: .touchUpInside)
+        self.hardButton.addTarget(self, action: #selector(touchUpButtons(_:)), for: .touchUpInside)
     }
     
     @objc func touchUpButtons(_ sender: UIButton) {
