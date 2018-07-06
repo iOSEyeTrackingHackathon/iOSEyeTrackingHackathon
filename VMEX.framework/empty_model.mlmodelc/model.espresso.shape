@@ -1,0 +1,76 @@
+{
+  "layer_shapes" : {
+    "concatenate_2_output" : {
+      "k" : 4,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "concatenate_1_output" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "eye_model2_conv2d_2_output" : {
+      "k" : 32,
+      "w" : 22,
+      "n" : 1,
+      "h" : 22
+    },
+    "eye_model1_global_average_pooling2d_1_output" : {
+      "k" : 32,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "eye_left" : {
+      "k" : 1,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "xy" : {
+      "k" : 2,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "dense_1__activation___output" : {
+      "k" : 2,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "dense_2__activation___output" : {
+      "k" : 2,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "eye_model2_global_average_pooling2d_2_output" : {
+      "k" : 32,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "ff" : {
+      "k" : 20,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "eye_model1_conv2d_1_output" : {
+      "k" : 32,
+      "w" : 22,
+      "n" : 1,
+      "h" : 22
+    },
+    "eye_right" : {
+      "k" : 1,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    }
+  }
+}
