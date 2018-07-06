@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DictionaryViewController: UIViewController {
+    let realm = try! Realm()
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -24,12 +26,21 @@ class DictionaryViewController: UIViewController {
 }
 
 extension DictionaryViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        let obj = self.realm.objects(WordInfo.self)
+        return obj.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath) as? DictionaryCell else { return UITableViewCell() }
+        
+        let obj = self.realm.objects(WordInfo.self)
+        cell.wordText?.text = obj[indexPath.row].word
+        cell.nounText?.text = obj[indexPath.row].noun
+        cell.verbText?.text = obj[indexPath.row].verb
+        return cell
     }
 }
 
