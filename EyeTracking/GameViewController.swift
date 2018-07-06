@@ -44,13 +44,13 @@ class GameViewController: UIViewController {
         She attributes her success to hard work and a little luck.
         그녀는 자신의 성공을 성실한 노력에 약간의 행운이 따른 결과로 본다.
         """,
-        "deliberate":
+        "deliberated":
         """
         1.신중한, 찬찬한
         She spoke in a slow and deliberate way.
         그녀는 천천히 신중한 태도로 말을 했다.
         """,
-        "architect":
+        "architects.":
         """
         1. 건축가
         2. 설계자[건설자]
@@ -139,6 +139,7 @@ extension GameViewController: Receiver {
             guard let stackView = visibleCell.subviews.last as? UIStackView else { return }
             let eyeX: CGFloat = CGFloat(value.first ?? 0)
             for index in 0..<self.labelPositions.count {
+                //if eyeX == 0 { continue }
                 if self.labelPositions[index] - eyeX > 0 {
                     guard let label = stackView.arrangedSubviews[index] as? UILabel else { return }
                     let count = self.counts[label.text!] ?? 0
@@ -161,7 +162,6 @@ extension GameViewController: Receiver {
                         if filtered.count == 0 && meaning != "None" {
                             addWord(key!, meaning)
                         }
-                        //팝업뷰업데이트 프로퍼티 초기화..
                     }
                     break
                 }
@@ -169,7 +169,11 @@ extension GameViewController: Receiver {
         }
     }
     func calibrationFinished() {
-        tempView?.removeFromSuperview()
+        UIView.animate(withDuration: 1, animations: {
+             self.tempView?.alpha = 0
+        }) { _ in
+            self.tempView?.removeFromSuperview()
+        }
     }
 }
 

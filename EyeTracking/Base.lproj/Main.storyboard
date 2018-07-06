@@ -33,26 +33,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9J-p4-AcF">
                                 <rect key="frame" x="20" y="170" width="696" height="194"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sft-sI-r6s">
-                                        <rect key="frame" x="20" y="20" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="9YH-us-Ls6"/>
-                                            <constraint firstAttribute="height" constant="30" id="l0F-RJ-IWx"/>
-                                        </constraints>
-                                    </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0jl-mq-reA">
-                                        <rect key="frame" x="20" y="58" width="656" height="128"/>
+                                        <rect key="frame" x="20" y="8" width="656" height="178"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="sft-sI-r6s" firstAttribute="leading" secondItem="Z9J-p4-AcF" secondAttribute="leading" constant="20" id="Fec-8W-cnU"/>
-                                    <constraint firstItem="0jl-mq-reA" firstAttribute="top" secondItem="sft-sI-r6s" secondAttribute="bottom" constant="8" id="YcN-Sx-jvQ"/>
+                                    <constraint firstItem="0jl-mq-reA" firstAttribute="top" secondItem="Z9J-p4-AcF" secondAttribute="top" constant="8" id="Mg7-0d-cFq"/>
                                     <constraint firstItem="0jl-mq-reA" firstAttribute="leading" secondItem="Z9J-p4-AcF" secondAttribute="leading" constant="20" id="a9C-2H-z4x"/>
-                                    <constraint firstItem="sft-sI-r6s" firstAttribute="top" secondItem="Z9J-p4-AcF" secondAttribute="top" constant="20" id="dq0-zq-UH3"/>
                                     <constraint firstAttribute="bottom" secondItem="0jl-mq-reA" secondAttribute="bottom" constant="8" id="t0w-YH-y4X"/>
                                     <constraint firstAttribute="trailing" secondItem="0jl-mq-reA" secondAttribute="trailing" constant="20" id="tCz-Eg-h3m"/>
                                 </constraints>
@@ -99,7 +90,6 @@
                         <viewLayoutGuide key="safeArea" id="iI8-YD-EiX"/>
                     </view>
                     <connections>
-                        <outlet property="dictionaryImageView" destination="sft-sI-r6s" id="gvX-Dh-Fvn"/>
                         <outlet property="dictionaryTextView" destination="0jl-mq-reA" id="Hnz-KS-NYD"/>
                         <outlet property="dictionaryView" destination="Z9J-p4-AcF" id="LIS-L1-b5J"/>
                         <outlet property="homeButton" destination="NOp-L0-uTX" id="TYu-MM-hhJ"/>
@@ -110,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbf-V0-ZJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280" y="-788"/>
+            <point key="canvasLocation" x="144" y="-1026"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="yKj-7Z-98K">
@@ -194,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PdR-Rl-jDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280" y="-1536"/>
+            <point key="canvasLocation" x="126" y="-1537"/>
         </scene>
         <!--Dictionary View Controller-->
         <scene sceneID="EOm-7k-d9b">
@@ -204,7 +194,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uHO-ta-85T" customClass="이">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uHO-ta-85T">
                                 <rect key="frame" x="20" y="107.33333333333334" width="696" height="256.66666666666663"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="30" id="ELg-lV-rbL">
