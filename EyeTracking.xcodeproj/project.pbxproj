@@ -54,12 +54,12 @@
 		19DB420520EE47DE0048753A /* EyeTracking */ = {
 			isa = PBXGroup;
 			children = (
-				19DB420620EE47DE0048753A /* AppDelegate.swift */,
-				19DB420820EE47DE0048753A /* ViewController.swift */,
-				19DB420A20EE47DE0048753A /* Main.storyboard */,
-				19DB420D20EE47DF0048753A /* Assets.xcassets */,
-				19DB420F20EE47DF0048753A /* LaunchScreen.storyboard */,
 				19DB421220EE47DF0048753A /* Info.plist */,
+				19DB420620EE47DE0048753A /* AppDelegate.swift */,
+				19DB420F20EE47DF0048753A /* LaunchScreen.storyboard */,
+				19DB420A20EE47DE0048753A /* Main.storyboard */,
+				19DB420820EE47DE0048753A /* ViewController.swift */,
+				19DB420D20EE47DF0048753A /* Assets.xcassets */,
 			);
 			path = EyeTracking;
 			sourceTree = "<group>";
@@ -290,7 +290,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hackathon.EyeTracking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,7 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hackathon.EyeTracking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
