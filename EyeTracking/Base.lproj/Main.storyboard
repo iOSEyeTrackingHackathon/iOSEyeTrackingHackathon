@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbf-V0-ZJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144" y="-1026"/>
+            <point key="canvasLocation" x="126" y="-823"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="yKj-7Z-98K">
@@ -153,18 +153,27 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1sQ-Xi-Aid">
+                                <rect key="frame" x="645" y="20" width="71" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="dYr-hq-RD1"/>
+                                    <constraint firstAttribute="width" constant="71" id="jLs-ea-TJK"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="poq-Pq-tGc" firstAttribute="width" secondItem="Hxy-W9-XOA" secondAttribute="width" id="1ea-Nf-cXQ"/>
                             <constraint firstItem="poq-Pq-tGc" firstAttribute="leading" secondItem="Hxy-W9-XOA" secondAttribute="trailing" constant="8" id="6mJ-BI-hcn"/>
                             <constraint firstItem="gGD-IQ-wYR" firstAttribute="leading" secondItem="onE-QT-gFs" secondAttribute="leading" id="8Wy-Ug-gML"/>
+                            <constraint firstItem="1sQ-Xi-Aid" firstAttribute="top" secondItem="onE-QT-gFs" secondAttribute="top" constant="20" id="F7r-zm-PNR"/>
                             <constraint firstItem="onE-QT-gFs" firstAttribute="trailing" secondItem="gGD-IQ-wYR" secondAttribute="trailing" id="G2R-XI-LrY"/>
                             <constraint firstItem="onE-QT-gFs" firstAttribute="bottom" secondItem="gGD-IQ-wYR" secondAttribute="bottom" id="IPq-Gc-h85"/>
                             <constraint firstItem="nyG-gc-Yaq" firstAttribute="width" secondItem="poq-Pq-tGc" secondAttribute="width" id="L9L-iS-G7h"/>
                             <constraint firstItem="nyG-gc-Yaq" firstAttribute="bottom" secondItem="poq-Pq-tGc" secondAttribute="bottom" id="QZn-1x-oMK"/>
                             <constraint firstItem="poq-Pq-tGc" firstAttribute="height" secondItem="Hxy-W9-XOA" secondAttribute="height" id="SZr-qe-rVA"/>
                             <constraint firstItem="onE-QT-gFs" firstAttribute="bottom" secondItem="Hxy-W9-XOA" secondAttribute="bottom" constant="32" id="UJp-4x-gA1"/>
+                            <constraint firstItem="onE-QT-gFs" firstAttribute="trailing" secondItem="1sQ-Xi-Aid" secondAttribute="trailing" constant="20" id="eEv-P6-5VK"/>
                             <constraint firstItem="gGD-IQ-wYR" firstAttribute="top" secondItem="onE-QT-gFs" secondAttribute="top" id="hOm-Md-Hvg"/>
                             <constraint firstItem="onE-QT-gFs" firstAttribute="bottom" secondItem="QUs-Ri-jq6" secondAttribute="bottom" constant="32" id="hpA-Ap-lc9"/>
                             <constraint firstItem="nyG-gc-Yaq" firstAttribute="height" secondItem="poq-Pq-tGc" secondAttribute="height" id="iIC-np-TiL"/>
@@ -184,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PdR-Rl-jDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="-1537"/>
+            <point key="canvasLocation" x="125.54347826086958" y="-1537.68115942029"/>
         </scene>
         <!--Dictionary View Controller-->
         <scene sceneID="EOm-7k-d9b">
@@ -295,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VEm-Uz-iMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.53260869565224" y="-1536.2318840579712"/>
+            <point key="canvasLocation" x="758" y="-1538"/>
         </scene>
     </scenes>
     <resources>

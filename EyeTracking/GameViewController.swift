@@ -34,17 +34,18 @@ class GameViewController: UIViewController {
         1. 성공, 성과
         She was surprised by the book's success.
         그녀는 그 책의 성공에 놀랐다.
+        
         2. 성공한 사람[것], 성공작
         The party was a big success.
         그 파티는 크게 성공적이었다.
         """,
-        "attribute":
+        "attributed":
         """
         1.  결과로[덕분으로] 보다
         She attributes her success to hard work and a little luck.
         그녀는 자신의 성공을 성실한 노력에 약간의 행운이 따른 결과로 본다.
         """,
-        "deliberated":
+        "deliberate":
         """
         1.신중한, 찬찬한
         She spoke in a slow and deliberate way.
@@ -53,6 +54,7 @@ class GameViewController: UIViewController {
         "architects.":
         """
         1. 건축가
+        
         2. 설계자[건설자]
         He was one of the principal architects of the revolution.
         그는 그 혁명을 설계한 주요 인물들 중의 한 명이었다.
@@ -90,7 +92,7 @@ class GameViewController: UIViewController {
         for word in splited {
             let label = UILabel()
             label.text = word
-            label.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
+            label.font = UIFont.systemFont(ofSize: 50, weight: .semibold)
             label.layer.cornerRadius = 10
             label.layer.masksToBounds = true
             labels.append(label)
@@ -109,8 +111,8 @@ class GameViewController: UIViewController {
         }
         stackView.layoutIfNeeded()
         
-        labelPositions.removeAll()
-        counts.removeAll()
+        self.labelPositions.removeAll()
+        self.counts.removeAll()
         for item in stackView.arrangedSubviews {
             guard let label = item as? UILabel else { return }
             self.counts[label.text!] = 0
@@ -139,9 +141,9 @@ extension GameViewController: Receiver {
             guard let stackView = visibleCell.subviews.last as? UIStackView else { return }
             let eyeX: CGFloat = CGFloat(value.first ?? 0)
             for index in 0..<self.labelPositions.count {
-                //if eyeX == 0 { continue }
                 if self.labelPositions[index] - eyeX > 0 {
                     guard let label = stackView.arrangedSubviews[index] as? UILabel else { return }
+                    if label.text! != "The" && label.text! != "the" && label.text != "of" {
                     let count = self.counts[label.text!] ?? 0
                     self.counts[label.text!] = count + 1
                     let filtered = self.counts.filter { $1 == 50 }
@@ -162,6 +164,7 @@ extension GameViewController: Receiver {
                         if filtered.count == 0 && meaning != "None" {
                             addWord(key!, meaning)
                         }
+                    }
                     }
                     break
                 }
