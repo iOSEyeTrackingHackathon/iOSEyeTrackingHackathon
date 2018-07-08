@@ -9,21 +9,58 @@
 import UIKit
 import VMEX
 import SnapKit
+import RealmSwift
 
 let spacing: CGFloat = 8
 let leftMargin: CGFloat = 20
 
 class GameViewController: UIViewController {
     
+    let realm = try! Realm()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var dictionaryView: UIView!
+    @IBOutlet weak var dictionaryImageView: UIImageView!
+    @IBOutlet weak var dictionaryTextView: UITextView!
+    
     let sessionHandler = SessionHandler()
-    let statementArray = ["We may need to apportion", "extra funds to the project", "if these changes are made."]
-    var labelXs = [CGFloat]()
-    var stackView: UIStackView = UIStackView()
+    let statementArray = ["The success of the project", "has been attributed to", "the deliberate efforts", "of the architects."]
+    let wordAndMeaning: [String: String] = [
+        "success":
+        """
+        1. 성공, 성과
+        She was surprised by the book's success.
+        그녀는 그 책의 성공에 놀랐다.
+        
+        2. 성공한 사람[것], 성공작
+        The party was a big success.
+        그 파티는 크게 성공적이었다.
+        """,
+        "attributed":
+        """
+        1.  결과로[덕분으로] 보다
+        She attributes her success to hard work and a little luck.
+        그녀는 자신의 성공을 성실한 노력에 약간의 행운이 따른 결과로 본다.
+        """,
+        "deliberate":
+        """
+        1.신중한, 찬찬한
+        She spoke in a slow and deliberate way.
+        그녀는 천천히 신중한 태도로 말을 했다.
+        """,
+        "architects.":
+        """
+        1. 건축가
+        
+        2. 설계자[건설자]
+        He was one of the principal architects of the revolution.
+        그는 그 혁명을 설계한 주요 인물들 중의 한 명이었다.
+        """
+    ]
+    var labelPositions = [CGFloat]()
     var counts = [String: Int]()
     var difficulty: Difficulty?
     var tempView: UIView?
@@ -55,7 +92,9 @@ class GameViewController: UIViewController {
         for word in splited {
             let label = UILabel()
             label.text = word
-            label.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
+            label.font = UIFont.systemFont(ofSize: 50, weight: .semibold)
+            label.layer.cornerRadius = 10
+            label.layer.masksToBounds = true
             labels.append(label)
         }
         let stackView = UIStackView()
@@ -71,6 +110,14 @@ class GameViewController: UIViewController {
             make.centerY.equalTo(cell.snp.centerY)
         }
         stackView.layoutIfNeeded()
+        
+        self.labelPositions.removeAll()
+        self.counts.removeAll()
+        for item in stackView.arrangedSubviews {
+            guard let label = item as? UILabel else { return }
+            self.counts[label.text!] = 0
+            self.labelPositions.append(label.frame.origin.x)
+        }
     }
     
     @objc func touchUpHomeButton(_ sender: UIButton) {
@@ -88,38 +135,48 @@ class GameViewController: UIViewController {
 
 extension GameViewController: Receiver {
     func receive(value: [Double], isTracking: Bool) {
-        //MARK: 보고 있는 단어를 찾는 알고리즘
-//        let eyeX: CGFloat = CGFloat(value.first ?? 0)
-//        for index in 0..<labelXs.count {
-//            if labelXs[index] - eyeX > 0 {
-//                DispatchQueue.main.async {
-//                    guard let label = self.stackView.arrangedSubviews[index] as? UILabel else { return }
-//                    let count = self.counts[label.text!] ?? 0
-//                    self.counts[label.text!] = count + 1
-//                    let filtered = self.counts.filter { $1 == 100 }
-//                    if filtered.count == 1 {
-//                        self.sessionHandler.pauseSession()
-//                        let key = filtered.first?.key
-//                        for item in self.stackView.arrangedSubviews {
-//                            let label = item as! UILabel
-//                            if label.text == key {
-//                                item.backgroundColor = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)
-//                            }
-//                        }
-//                        let alert = UIAlertController(title: "asdf", message: "asdf", preferredStyle: .alert)
-//                        let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
-//                            self.sessionHandler.resumeSession()
-//                        })
-//                        alert.addAction(action)
-//                        self.present(alert, animated: true, completion: nil)
-//                    }
-//                }
-//                break
-//            }
-//        }
+        print(value.first!)
+        DispatchQueue.main.async {
+            guard let visibleCell = self.tableView.visibleCells.first else { return }
+            guard let stackView = visibleCell.subviews.last as? UIStackView else { return }
+            let eyeX: CGFloat = CGFloat(value.first ?? 0)
+            for index in 0..<self.labelPositions.count {
+                if self.labelPositions[index] - eyeX > 0 {
+                    guard let label = stackView.arrangedSubviews[index] as? UILabel else { return }
+                    if label.text! != "The" && label.text! != "the" && label.text != "of" {
+                    let count = self.counts[label.text!] ?? 0
+                    self.counts[label.text!] = count + 1
+                    let filtered = self.counts.filter { $1 == 50 }
+                    if filtered.count == 1 {
+                        self.labelPositions.removeAll()
+                        self.counts.removeAll()
+                        let key = filtered.first?.key
+                        for item in stackView.arrangedSubviews {
+                            let label = item as! UILabel
+                            if label.text == key {
+                                item.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.3607843137, blue: 0.3490196078, alpha: 1)
+                            }
+                        }
+                        let meaning = self.wordAndMeaning[key!] ?? "None"
+                        self.dictionaryTextView.text = meaning
+                        let object = self.realm.objects(WordInfo.self)
+                        let filtered = object.filter(NSPredicate(format: "word = %@", key!))
+                        if filtered.count == 0 && meaning != "None" {
+                            addWord(key!, meaning)
+                        }
+                    }
+                    }
+                    break
+                }
+            }
+        }
     }
     func calibrationFinished() {
-        tempView?.removeFromSuperview()
+        UIView.animate(withDuration: 1, animations: {
+             self.tempView?.alpha = 0
+        }) { _ in
+            self.tempView?.removeFromSuperview()
+        }
     }
 }
 

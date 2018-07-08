@@ -11,16 +11,14 @@ import RealmSwift
 
 class WordInfo: Object {
     @objc dynamic var word: String = ""
-    @objc dynamic var noun: String = ""
-    @objc dynamic var verb: String = ""
+    @objc dynamic var meaning: String = ""
 }
 
-func addWord(_ word: String, _ noun: String, _ verb: String) {
+func addWord(_ word: String, _ meaning: String) {
     let realm = try! Realm()
     let object = WordInfo()
     object.word = word
-    object.noun = noun
-    object.verb = verb
+    object.meaning = meaning
     try! realm.write{
         realm.add(object)
     }

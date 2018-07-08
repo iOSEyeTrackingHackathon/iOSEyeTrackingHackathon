@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		190BD48520EFD3E30090E76D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BD48420EFD3E30090E76D /* StartViewController.swift */; };
-		190BD48720EFD3E90090E76D /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BD48620EFD3E90090E76D /* DifficultyViewController.swift */; };
 		190BD48920EFD3EE0090E76D /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BD48820EFD3EE0090E76D /* DictionaryViewController.swift */; };
 		190BD49220EFE9090090E76D /* VMEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190BD49120EFE9090090E76D /* VMEX.framework */; };
 		190BD49320EFE9090090E76D /* VMEX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 190BD49120EFE9090090E76D /* VMEX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -38,7 +37,6 @@
 
 /* Begin PBXFileReference section */
 		190BD48420EFD3E30090E76D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		190BD48620EFD3E90090E76D /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
 		190BD48820EFD3EE0090E76D /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		190BD49120EFE9090090E76D /* VMEX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VMEX.framework; sourceTree = "<group>"; };
 		19DB420320EE47DE0048753A /* EyeTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyeTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +74,6 @@
 				19DB420420EE47DE0048753A /* Products */,
 				D21BDD4E60FCF00FDF0FD01A /* Pods */,
 				F0FDB3C5CAA7056BEC857F80 /* Frameworks */,
-				6BF22E2B20EFF2B1009116A2 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};

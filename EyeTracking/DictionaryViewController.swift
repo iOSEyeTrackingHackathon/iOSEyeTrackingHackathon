@@ -10,13 +10,16 @@ import UIKit
 import RealmSwift
 
 class DictionaryViewController: UIViewController {
+    
     let realm = try! Realm()
-
+    var object: Results<WordInfo>!
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.object = realm.objects(WordInfo.self)
         self.backButton.addTarget(self, action: #selector(touchUpBackButton(_:)), for: .touchUpInside)
     }
     
@@ -25,27 +28,19 @@ class DictionaryViewController: UIViewController {
     }
 }
 
-extension DictionaryViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let obj = self.realm.objects(WordInfo.self)
-        return obj.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath) as? DictionaryCell else { return UITableViewCell() }
-        
-        let obj = self.realm.objects(WordInfo.self)
-        cell.wordText?.text = obj[indexPath.row].word
-        cell.nounText?.text = obj[indexPath.row].noun
-        cell.verbText?.text = obj[indexPath.row].verb
+extension DictionaryViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DictionaryCell else { return UICollectionViewCell() }
+        let data = self.object[indexPath.row]
+        cell.word.text = data.word
+        cell.meaning.text = data.meaning
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.object.count
     }
 }
 
-extension DictionaryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+extension DictionaryViewController: UICollectionViewDelegate {
+    
 }
